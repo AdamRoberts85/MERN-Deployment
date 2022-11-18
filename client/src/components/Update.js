@@ -26,6 +26,13 @@ const Update = (props) => {
     const days = [['monday', setMonday], ['tuesday', setTuesday], ['wednesday', setWednesday], ['thursday', setThursday], ['friday', setFriday], ['saturday',setSaturday], ['sunday', setSunday]]
 
     const card = useRef();
+    const onEnter = ({ currentTarget }) => {
+        gsap.to(currentTarget, { borderColor: "#e77614", scale: 1.08 });
+      };
+      
+      const onLeave = ({ currentTarget }) => {
+        gsap.to(currentTarget, { borderColor: "#28a92b", scale: 1 });
+      };
     // useEffect(() => {
     //     gsap.from(".card", {duration: 1.5, opacity: 0, scale: 0.1, ease: "back"}); 
     // })
@@ -123,7 +130,7 @@ const Update = (props) => {
             </Paper>
             <div style={{ marginLeft: '20%', marginRight: '20%', marginTop: '8%', width: '55%' }}>
 
-                <Paper elevation={18} style={{ width: '75%' }} className='card' ref={card}>
+                <Paper elevation={18} style={{ width: '75%' }} className='card' ref={card} onMouseEnter={onEnter} onMouseLeave={onLeave}>
                     <form onSubmit={onSubmitHandler} style={{ color: '#f0f0f0' }}>
 
                         <FormControl style={{ marginBottom: '2%' }}>
